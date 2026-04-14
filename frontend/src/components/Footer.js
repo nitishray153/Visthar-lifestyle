@@ -26,6 +26,28 @@ export default function Footer() {
 
     return (
         <footer data-testid="main-footer" className="border-t border-white/5" style={{ background: '#050505' }}>
+            {/* Category Browse Strip (like boAt) */}
+            <div className="border-b border-white/5 py-8">
+                <div className="section-container">
+                    <div className="flex items-center justify-center gap-6 md:gap-10 overflow-x-auto scrollbar-none">
+                        {[
+                            { name: 'Chargers', image: 'https://images.unsplash.com/photo-1583142485083-291557266e6a?w=80&h=80&fit=crop' },
+                            { name: 'Cables', image: 'https://images.unsplash.com/photo-1660945671777-6389d37d6ab4?w=80&h=80&fit=crop' },
+                            { name: 'Headphones', image: 'https://images.unsplash.com/photo-1628911771730-881503b8e9c9?w=80&h=80&fit=crop' },
+                            { name: 'Speakers', image: 'https://images.unsplash.com/photo-1589256469067-ea99122bbdc4?w=80&h=80&fit=crop' },
+                            { name: 'Earbuds', image: 'https://images.unsplash.com/photo-1677346414290-d337cbc682a6?w=80&h=80&fit=crop' },
+                        ].map(cat => (
+                            <Link key={cat.name} to={`/products?category=${cat.name}`} className="flex flex-col items-center gap-2 shrink-0 group">
+                                <div className="w-14 h-14 md:w-16 md:h-16 rounded-full overflow-hidden border-2 border-white/10 group-hover:border-[#00FF66]/50 transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_0_15px_rgba(0,255,102,0.2)]">
+                                    <img src={cat.image} alt={cat.name} className="w-full h-full object-cover" />
+                                </div>
+                                <span className="text-[10px] font-medium text-zinc-500 group-hover:text-[#00FF66] transition-colors">{cat.name}</span>
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
             <div className="section-container py-16 md:py-24">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                     {/* Brand */}

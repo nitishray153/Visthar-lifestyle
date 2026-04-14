@@ -37,7 +37,7 @@ function App() {
                     {showLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
                     <div className={`min-h-screen transition-opacity duration-700 ${showLoading ? 'opacity-0' : 'opacity-100'}`} style={{ background: '#050505' }}>
                         <Navbar />
-                        <main className="pt-16 md:pt-20">
+                        <main className="pt-16 md:pt-[108px]">
                             <Suspense fallback={<PageLoader />}>
                                 <Routes>
                                     <Route path="/" element={<HomePage />} />

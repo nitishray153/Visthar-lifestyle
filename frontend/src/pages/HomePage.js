@@ -247,20 +247,28 @@ function ComingSoonSection() {
 
     return (
         <section data-testid="coming-soon-section" className="py-24 md:py-32 relative overflow-hidden" style={{ background: '#0A0A0A' }}>
-            <div className="absolute inset-0 opacity-5">
-                <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-[#00FF66] blur-[200px]" />
-                <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-violet-500 blur-[200px]" />
+            {/* Background glow effects */}
+            <div className="absolute inset-0">
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-violet-600/10 blur-[200px]" />
+                <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-[#00FF66]/5 blur-[200px]" />
             </div>
             <div className="section-container relative z-10">
                 <FadeIn>
-                    <p className="text-xs tracking-[0.2em] uppercase text-violet-400 font-mono text-center mb-3">Coming Soon</p>
+                    {/* India's First Badge */}
+                    <div className="flex justify-center mb-4">
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/5">
+                            <div className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] animate-pulse" />
+                            <span className="indias-first-badge text-xs font-bold tracking-wider uppercase">India's First</span>
+                        </div>
+                    </div>
+                    <p className="text-xs tracking-[0.2em] uppercase text-violet-400 font-mono text-center mb-3">Launching Soon</p>
                     <h2 className="text-4xl md:text-5xl tracking-tighter font-medium text-center mb-4">AI-Powered Innovation</h2>
                     <p className="text-center text-zinc-400 mb-8 max-w-lg mx-auto">The next generation of smart accessories. Pre-book now for exclusive early access pricing.</p>
                 </FadeIn>
 
                 {/* Countdown */}
                 <FadeIn>
-                    <div className="flex justify-center gap-4 mb-12">
+                    <div className="flex justify-center gap-4 mb-14">
                         {[['days', countdown.days], ['hours', countdown.hours], ['mins', countdown.mins], ['secs', countdown.secs]].map(([label, val]) => (
                             <div key={label} className="glass rounded-xl p-3 md:p-4 text-center min-w-[60px] md:min-w-[80px]" style={{ borderColor: 'rgba(167,139,250,0.2)' }}>
                                 <p className="text-xl md:text-3xl font-semibold text-white font-mono">{String(val).padStart(2, '0')}</p>
@@ -273,21 +281,33 @@ function ComingSoonSection() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {comingSoon.map((product, i) => (
                         <FadeIn key={product.id} delay={i * 0.2}>
-                            <div className="glass rounded-2xl overflow-hidden glass-hover" style={{ borderColor: 'rgba(167,139,250,0.15)' }}>
+                            <div className="coming-soon-blur-card rounded-2xl overflow-hidden" style={{ border: '1px solid rgba(167,139,250,0.15)' }}>
+                                {/* Image with blur overlay */}
                                 <div className="aspect-video relative overflow-hidden bg-[#080808]">
-                                    <img src={product.image} alt={product.name} className="w-full h-full object-contain p-8" />
-                                    <div className="absolute top-4 left-4">
-                                        <span className="text-[10px] font-semibold px-3 py-1 rounded-full bg-violet-500/15 text-violet-400 border border-violet-500/30">
-                                            Coming Soon
+                                    <img src={product.image} alt={product.name} className="w-full h-full object-contain p-8 transition-all duration-500 hover:scale-105" />
+                                    {/* Blur overlay effect */}
+                                    <div className="absolute inset-0 blur-overlay" />
+                                    {/* Content over blur */}
+                                    <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
+                                        <span className="indias-first-badge text-lg md:text-2xl font-bold tracking-wider mb-1">INDIA'S FIRST</span>
+                                        <span className="text-xs tracking-[0.3em] uppercase text-white/70 font-mono">Launching Soon</span>
+                                    </div>
+                                    {/* Top badges */}
+                                    <div className="absolute top-4 left-4 z-20 flex gap-2">
+                                        <span className="text-[10px] font-semibold px-3 py-1 rounded-full bg-violet-500/20 text-violet-300 border border-violet-500/30 backdrop-blur-sm">
+                                            AI Powered
+                                        </span>
+                                        <span className="text-[10px] font-semibold px-3 py-1 rounded-full bg-[#D4AF37]/20 text-[#D4AF37] border border-[#D4AF37]/30 backdrop-blur-sm">
+                                            Limited Edition
                                         </span>
                                     </div>
                                 </div>
-                                <div className="p-6">
+                                <div className="p-6 relative z-10" style={{ background: 'rgba(10,10,10,0.9)' }}>
                                     <h3 className="text-xl font-medium mb-2">{product.name}</h3>
                                     <p className="text-sm text-zinc-400 mb-4 line-clamp-2">{product.description}</p>
                                     <div className="flex flex-wrap gap-2 mb-4">
                                         {product.features.slice(0, 4).map(f => (
-                                            <span key={f} className="text-[10px] px-2 py-1 rounded-full bg-white/5 text-zinc-400">{f}</span>
+                                            <span key={f} className="text-[10px] px-2 py-1 rounded-full bg-white/5 text-zinc-400 border border-white/5">{f}</span>
                                         ))}
                                     </div>
                                     <div className="flex items-center justify-between">
@@ -298,9 +318,9 @@ function ComingSoonSection() {
                                         <button
                                             data-testid={`prebook-${product.id}`}
                                             onClick={() => setActiveProduct(activeProduct === product.id ? null : product.id)}
-                                            className="btn-primary text-sm px-6 py-2"
+                                            className="btn-primary text-sm px-6 py-2 animate-pulse-glow"
                                         >
-                                            Pre-Book
+                                            Pre-Book Now
                                         </button>
                                     </div>
 
@@ -319,6 +339,49 @@ function ComingSoonSection() {
                                     )}
                                 </div>
                             </div>
+                        </FadeIn>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+}
+
+function BrowseCategoriesSection() {
+    const cats = [
+        { name: 'Chargers', image: 'https://images.unsplash.com/photo-1583142485083-291557266e6a?w=300&h=300&fit=crop', count: '3 Products' },
+        { name: 'Cables', image: 'https://images.unsplash.com/photo-1660945671777-6389d37d6ab4?w=300&h=300&fit=crop', count: '3 Products' },
+        { name: 'Headphones', image: 'https://images.unsplash.com/photo-1628911771730-881503b8e9c9?w=300&h=300&fit=crop', count: '2 Products' },
+        { name: 'Speakers', image: 'https://images.unsplash.com/photo-1589256469067-ea99122bbdc4?w=300&h=300&fit=crop', count: '2 Products' },
+        { name: 'Earbuds', image: 'https://images.unsplash.com/photo-1677346414290-d337cbc682a6?w=300&h=300&fit=crop', count: '2 Products' },
+    ];
+
+    return (
+        <section data-testid="browse-categories" className="py-20 md:py-28" style={{ background: '#050505' }}>
+            <div className="section-container">
+                <FadeIn>
+                    <p className="text-xs tracking-[0.2em] uppercase text-[#00FF66] font-mono text-center mb-3">Browse by Category</p>
+                    <h2 className="text-3xl md:text-4xl tracking-tighter font-medium text-center mb-10">Shop What You Love</h2>
+                </FadeIn>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+                    {cats.map((cat, i) => (
+                        <FadeIn key={cat.name} delay={i * 0.1}>
+                            <Link
+                                to={`/products?category=${cat.name}`}
+                                data-testid={`browse-cat-${cat.name.toLowerCase()}`}
+                                className="cat-card-tilt glass rounded-2xl overflow-hidden group block"
+                            >
+                                <div className="aspect-square relative overflow-hidden">
+                                    <img src={cat.image} alt={cat.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                                    <div className="absolute bottom-0 left-0 right-0 p-4">
+                                        <h3 className="text-sm font-semibold text-white mb-0.5">{cat.name}</h3>
+                                        <p className="text-[10px] text-zinc-400">{cat.count}</p>
+                                    </div>
+                                    {/* Hover glow border */}
+                                    <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#00FF66]/30 rounded-2xl transition-colors duration-300" />
+                                </div>
+                            </Link>
                         </FadeIn>
                     ))}
                 </div>
@@ -495,6 +558,7 @@ export default function HomePage() {
             <ComingSoonSection />
             <SustainabilitySection />
             <InnovationSection />
+            <BrowseCategoriesSection />
             <OEMSection />
         </div>
     );

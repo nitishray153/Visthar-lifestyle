@@ -186,6 +186,62 @@
     animation: float 8s ease-in-out infinite;
 }
 
+/* ─── Category Hover (boAt-style) ────────────────────────── */
+
+.category-hover-item:hover > div:first-child {
+    border-color: var(--hover-color, #00FF66) !important;
+    box-shadow: 0 0 15px var(--hover-color, rgba(0, 255, 102, 0.3));
+}
+
+/* ─── Coming Soon Blur Effect ────────────────────────────── */
+
+.coming-soon-blur-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.coming-soon-blur-card::before {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    background: radial-gradient(ellipse at center, rgba(167, 139, 250, 0.15), transparent 70%);
+    z-index: 0;
+    animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.coming-soon-blur-card .blur-overlay {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background: rgba(5, 5, 5, 0.3);
+}
+
+/* ─── India's First Badge ────────────────────────────────── */
+
+@keyframes badge-shine {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+
+.indias-first-badge {
+    background: linear-gradient(90deg, #D4AF37, #FFD700, #D4AF37, #FFD700, #D4AF37);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: badge-shine 4s linear infinite;
+}
+
+/* ─── Category Card Tilt ─────────────────────────────────── */
+
+.cat-card-tilt {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.cat-card-tilt:hover {
+    transform: translateY(-6px) rotateX(2deg) rotateY(-2deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 255, 102, 0.08);
+}
+
 /* ─── Loading Screen ─────────────────────────────────────── */
 
 .loading-overlay {
