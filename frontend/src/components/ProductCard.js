@@ -29,26 +29,28 @@ export default function ProductCard({ product, index = 0 }) {
             className="product-card glass rounded-2xl overflow-hidden group"
         >
             {/* Image */}
-            <Link to={`/product/${product.id}`} className="block relative aspect-square overflow-hidden bg-[#0A0A0A]">
-                <img
-                    src={product.image}
-                    alt={product.name}
-                    className="product-image w-full h-full object-cover"
-                    loading="lazy"
-                />
+            <div className="block relative aspect-square overflow-hidden bg-[#0A0A0A]">
+                <Link to={`/product/${product.id}`} className="block w-full h-full">
+                    <img
+                        src={product.image}
+                        alt={product.name}
+                        className="product-image w-full h-full object-cover"
+                        loading="lazy"
+                    />
+                </Link>
                 {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
                 {/* Badge */}
                 {product.badge && (
-                    <span className={`absolute top-3 left-3 text-[10px] font-semibold px-2.5 py-1 rounded-full border ${badgeColors[product.badge] || 'bg-white/10 text-white border-white/20'}`}>
+                    <span className={`absolute top-3 left-3 text-[10px] font-semibold px-2.5 py-1 rounded-full border pointer-events-none ${badgeColors[product.badge] || 'bg-white/10 text-white border-white/20'}`}>
                         {product.badge}
                     </span>
                 )}
 
                 {/* Discount */}
                 {discount > 0 && (
-                    <span className="absolute top-3 right-3 text-[10px] font-bold px-2 py-1 rounded-full bg-red-500/20 text-red-400 border border-red-500/30">
+                    <span className="absolute top-3 right-3 text-[10px] font-bold px-2 py-1 rounded-full bg-red-500/20 text-red-400 border border-red-500/30 pointer-events-none">
                         -{discount}%
                     </span>
                 )}
@@ -65,14 +67,14 @@ export default function ProductCard({ product, index = 0 }) {
                     {!product.is_coming_soon && (
                         <button
                             data-testid={`add-to-cart-quick-${product.id}`}
-                            onClick={(e) => { e.preventDefault(); addToCart(product.id); }}
+                            onClick={(e) => { e.stopPropagation(); addToCart(product.id); }}
                             className="w-9 h-9 rounded-full bg-[#00FF66] flex items-center justify-center text-black hover:bg-[#39FF14] transition-colors"
                         >
                             <ShoppingCart size={14} />
                         </button>
                     )}
                 </div>
-            </Link>
+            </div>
 
             {/* Info */}
             <div className="p-4">

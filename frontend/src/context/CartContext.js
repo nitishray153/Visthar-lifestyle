@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useCallback } from 'react';
+import { createContext, useContext, useState, useCallback, useEffect } from 'react';
 import api from '@/lib/api';
 import { toast } from 'sonner';
 
@@ -18,6 +18,8 @@ export function CartProvider({ children }) {
             // silently fail
         }
     }, []);
+
+    useEffect(() => { fetchCart(); }, [fetchCart]);
 
     const addToCart = async (productId, quantity = 1) => {
         setCartLoading(true);
