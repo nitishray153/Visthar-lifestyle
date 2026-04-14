@@ -1,0 +1,103 @@
+{
+  "project_name": "Visthar Ecommerce",
+  "domain": "Premium Tech / E-commerce",
+  "theme": "dark",
+  "archetype": "7 (Electric & Neon) paired with 5 (Jewel & Luxury)",
+  "aesthetic_vibe": "Apple meets Tesla and Nothing. Minimal, futuristic, high-performance, visually immersive, raw tech elegance.",
+  "colors": {
+    "background": {
+      "default": "#050505",
+      "surface": "#0A0A0A",
+      "glass": "rgba(255, 255, 255, 0.03)"
+    },
+    "text": {
+      "primary": "#FFFFFF",
+      "secondary": "#A1A1AA",
+      "muted": "#52525B"
+    },
+    "brand": {
+      "primary": "#00FF66",
+      "primary_hover": "#39FF14",
+      "accent": "#D4AF37",
+      "neon_glow": "rgba(0, 255, 102, 0.4)"
+    },
+    "border": {
+      "default": "rgba(255, 255, 255, 0.08)",
+      "hover": "rgba(0, 255, 102, 0.5)"
+    }
+  },
+  "typography": {
+    "fonts": {
+      "headings": "Outfit, sans-serif",
+      "body": "Manrope, sans-serif",
+      "mono": "JetBrains Mono, monospace"
+    },
+    "scales": {
+      "h1": "text-5xl md:text-6xl tracking-tighter font-medium",
+      "h2": "text-4xl md:text-5xl tracking-tighter font-medium",
+      "h3": "text-2xl md:text-3xl tracking-tight font-medium",
+      "body": "text-base md:text-lg leading-relaxed text-zinc-400",
+      "overline": "text-xs tracking-[0.2em] uppercase font-mono text-zinc-500"
+    }
+  },
+  "spacing_and_layout": {
+    "container_padding": "px-6 md:px-12 lg:px-24",
+    "section_spacing": "py-24 md:py-32",
+    "grid_system": "Bento Grid (Mode A: The Tetris Grid) for marketing and feature showcases. Wide gaps (gap-8 to gap-12).",
+    "surface_strategy": "Crystal Glassmorphism: backdrop-blur-2xl, bg-white/5, 1px border-white/10. Used for sticky nav, product cards, and feature blocks."
+  },
+  "motion_and_interactions": {
+    "scroll": "Smooth scrolling via Lenis. Parallax background layers.",
+    "hover_states": "Cards lift slightly (-translate-y-1), borders illuminate with neon green glow, images scale up by 1.05.",
+    "page_transitions": "Fade and scale up via framer-motion.",
+    "micro_interactions": "Buttons have magnetic pull effect or glowing trace border."
+  },
+  "components": {
+    "buttons": {
+      "primary": "Solid neon green background (#00FF66), black text, bold, slight glow shadow.",
+      "secondary": "Glassmorphism base, white text, 1px white/10 border. Hover state border turns neon green."
+    },
+    "cards": {
+      "product": "Glass container, high-quality image, subtle gradient overlay from bottom, mono specs text."
+    },
+    "navigation": {
+      "header": "Fixed top, Crystal Glass (backdrop-blur-xl bg-black/40), minimal links, primary CTA. Dark text logo.",
+      "footer": "Massive padding, large typography for brand impact, gold emblem logo."
+    }
+  },
+  "media": {
+    "logos": {
+      "dark_text": "https://customer-assets.emergentagent.com/job_eco-smart-hub/artifacts/p1qv9x6j_Visthar_logo_page-0001-removebg-preview.png",
+      "gold_emblem": "https://customer-assets.emergentagent.com/job_eco-smart-hub/artifacts/2thwkzxn_visthar_logo-removebg-preview%20%281%29.png"
+    },
+    "hero_and_backgrounds": {
+      "floating_earbuds": "https://static.prod-images.emergentagent.com/jobs/004ef417-6cdd-417a-8441-04bb16074be9/images/98f223321cf2917aefcd789a36aebd0c9d830ccb9a3c4a972d538d4a53df9fea.png",
+      "eco_particles_bg": "https://static.prod-images.emergentagent.com/jobs/004ef417-6cdd-417a-8441-04bb16074be9/images/aeff175e5492436954b8cc974e6721b659f6d79a0519c83de531e3c7f089f6fa.png"
+    },
+    "products_and_features": {
+      "smart_glasses": "https://static.prod-images.emergentagent.com/jobs/004ef417-6cdd-417a-8441-04bb16074be9/images/8ed348b667ca9993e00bbaeb1f51b1130b8a6a7e1b764ead89f26b9ea1b564e3.png",
+      "eco_packaging": "https://static.prod-images.emergentagent.com/jobs/004ef417-6cdd-417a-8441-04bb16074be9/images/8f9baa2f06bf55a949f5b1c0b9e37312d1276050c8642075a0dd6766e00592c2.png",
+      "headphones": "https://images.unsplash.com/photo-1628911771730-881503b8e9c9",
+      "usb_cable": "https://images.pexels.com/photos/18641665/pexels-photo-18641665.png",
+      "wireless_charger": "https://images.unsplash.com/photo-1761998066468-011109c1df1f"
+    }
+  },
+  "testing": {
+    "data_testid_rule": "All interactive and key informational elements MUST include a data-testid attribute to facilitate robust automated testing (e.g., data-testid='hero-shop-button')."
+  },
+  "libraries": {
+    "icons": "@phosphor-icons/react (Duotone or Light weight for tech feel)",
+    "animations": "framer-motion, @studio-freight/react-lenis"
+  },
+  "instructions_to_main_agent": [
+    "Install and use Outfit (headings) and Manrope (body) from Google Fonts.",
+    "Implement the animated loading screen using the Gold Emblem logo scaling up with a neon green glow.",
+    "Hero section must use the floating_earbuds image with an anti-gravity framer-motion floating animation. The eco_particles_bg should be the background with a parallax effect.",
+    "Use raw HTML/Tailwind for bento grids and asymmetric layouts instead of Shadcn standard cards.",
+    "For the Coming Soon section, use the smart_glasses image.",
+    "For the Sustainability (V Green) section, use the eco_packaging image.",
+    "Implement custom scrollbars (dark track, green thumb).",
+    "Never use generic white backgrounds. Everything must be Obsidian Black or Tinted Glass.",
+    "Ensure the navbar is sticky with backdrop-blur and uses the dark_text logo."
+  ]
+}
